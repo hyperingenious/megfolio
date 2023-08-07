@@ -7,10 +7,13 @@ import {
   Group,
   Text,
   List,
+  Code,
   ThemeIcon,
+  Paper,
   rem,
 } from "@mantine/core";
-import { IconCheck } from "@tabler/icons-react";
+
+import { IconCheck, IconColorSwatch, IconUserCircle } from "@tabler/icons-react";
 // import image from './image.svg';
 import image from "../assets/csk.svg";
 
@@ -72,8 +75,36 @@ const useStyles = createStyles((theme) => ({
   },
   introductionText: {
     fontWeight: 500,
-    color: '#d1d5db'
-  }
+    color: "#d1d5db",
+  },
+
+  card: {
+    position: "relative",
+    cursor: "pointer",
+    overflow: "hidden",
+    transition: "transform 150ms ease, box-shadow 100ms ease",
+    padding: theme.spacing.xl,
+    paddingLeft: `calc(${theme.spacing.xl} * 2)`,
+
+    "&:hover": {
+      boxShadow: theme.shadows.md,
+      transform: "scale(1.02)",
+    },
+
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      bottom: 0,
+      left: 0,
+      width: rem(6),
+      backgroundImage: theme.fn.linearGradient(
+        0,
+        theme.colors.pink[6],
+        theme.colors.grape[8]
+      ),
+    },
+  },
 }));
 
 export function About() {
@@ -83,18 +114,17 @@ export function About() {
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>
-            <Title className={classes.title}>About Me</Title>
+            {/* <Title className={classes.title}>About Me</Title>
             <Text color="dimmed" mt="md" className={classes.introductionText}>
-              Hey! It's Saurav I'm a Frontend Engineer living in INDIA and a Person who understands businesses and designs very
-              well, because that is kind of innate quality of me. I've done made
-              some cool Frontend Projects you can see them on my portfolio Apart
-              from being tech person I have very good business stand as I have
-              worked with 2️⃣ Startups as a co-founder in my early age. I'm very
-              good at thinking from customer's POV. I understand Indian
-              consumers very well.
+              Hey! It's Saurav I'm a Frontend Engineer living in INDIA and a
+              Person who understands businesses and designs very well, because
+              that is kind of innate quality of me. I've done made some cool
+              Frontend Projects you can see them on my portfolio Apart from
+              being tech person I have very good business stand as I have worked
+              with 2️⃣ Startups as a co-founder in my early age. I'm very good at
+              thinking from customer's POV. I understand Indian consumers very
+              well.
             </Text>
-
-
 
             <Group mt={30}>
               <Button radius="xl" size="md" className={classes.control}>
@@ -107,12 +137,36 @@ export function About() {
                 className={classes.control}
               >
                 Source code
-              </Button>
-            </Group>
+              </Button> 
+            </Group>*/}
+              <CardGradient/>
           </div>
           <Image src={image} className={classes.image} />
         </div>
       </Container>
     </div>
+  );
+}
+
+
+function CardGradient() {
+  const { classes } = useStyles();
+  return (
+    <Paper withBorder radius="md" className={classes.card}>
+      <ThemeIcon
+        size="xl"
+        radius="md"
+        variant="gradient"
+        gradient={{ deg: 0, from: "purple", to: "pink" }}
+      >
+        <IconUserCircle size={rem(28)} stroke={1.5} />
+      </ThemeIcon>
+      <Text size="xl" weight={500} mt="md">
+       About Me
+      </Text>
+      <Text size="sm" mt="sm" color="dimmed">
+       Lorem ipsum dolor sit amet,<Code>Frontend Developer</Code> consectetur adipisicing elit. Nemo, aperiam rem id architecto sed vero quidem possimus ut commodi aliquam tenetur delectus minima deserunt quasi? Ipsum possimus ex velit quae! Quisquam odio similique nisi officia atque quos cumque, tempore animi iusto, delectus in? Fuga in ducimus laudantium laborum eos ipsum voluptates voluptatum nulla delectus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, suscipit iure! Odio dolorum, ea laborum numquam assumenda sequi ratione, accusantium odit ipsam neque laboriosam nisi natus! Tempore iure enim soluta.
+      </Text>
+    </Paper>
   );
 }

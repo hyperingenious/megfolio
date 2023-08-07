@@ -5,7 +5,9 @@ import {
   Button,
   Group,
   rem,
+  BackgroundImage,
 } from "@mantine/core";
+import bgImage from "../assets/bgImage.jpg";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -14,7 +16,20 @@ const useStyles = createStyles((theme) => ({
     backgroundColor:
       theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
   },
-
+  darkBg: {
+    position: "relative",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      // backdropFilter: 'blur(10px)',
+      backgroundColor: "rgba(0, 0, 0, 0.42)", // Adjust the alpha value for darkness
+      zIndex: 0,
+    },
+  },
   inner: {
     position: "relative",
     paddingTop: rem(200),
@@ -29,7 +44,7 @@ const useStyles = createStyles((theme) => ({
 
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontSize: rem(50),
+    fontSize: rem(70.8),
     fontWeight: 900,
     lineHeight: 1.1,
     margin: 0,
@@ -37,7 +52,7 @@ const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
 
     [theme.fn.smallerThan("sm")]: {
-      fontSize: rem(35),
+      fontSize: rem(45),
       lineHeight: 1.2,
     },
   },
@@ -78,48 +93,50 @@ export function HeroTitle() {
 
   return (
     <div className={classes.wrapper}>
-      <Container size={700} className={classes.inner}>
-        <h1 className={classes.title}>
-          Hi I'm{" "}
-          <Text
-            component="span"
-            variant="gradient"
-            gradient={{ from: "purple", to: "pink" }}
-            inherit
-          >
-            Saurav Meghwal
-          </Text>{" "}
-          , I'm Frontend Developer
-        </h1>
+      <BackgroundImage src={bgImage} className={classes.darkBg} >
+        <Container size={700} className={classes.inner}>
+          <h1 className={classes.title}>
+            Hi I'm{" "}
+            <Text
+              component="span"
+              variant="gradient"
+              gradient={{ from: "purple", to: "pink" }}
+              inherit
+            >
+              Saurav Meghwal
+            </Text>{" "}
+            , I'm Frontend Developer
+          </h1>
 
-        <Text className={classes.description} color="dimmed">
-          Build fully functional accessible web applications with ease – Mantine
-          includes more than 100 customizable components and hooks to cover you
-          in any situation
-        </Text>
+          <Text className={classes.description} color="dimmed">
+            Build fully functional accessible web applications with ease –
+            Mantine includes more than 100 customizable components and hooks to
+            cover you in any situation
+          </Text>
 
-        <Group className={classes.controls}>
-          <Button
-            size="xl"
-            className={classes.control}
-            variant="gradient"
-            gradient={{ from: "purple", to: "pink" }}
-          >
-            Get started
-          </Button>
+          <Group className={classes.controls}>
+            <Button
+              size="xl"
+              className={classes.control}
+              variant="gradient"
+              gradient={{ from: "purple", to: "pink" }}
+            >
+              Get started
+            </Button>
 
-          <Button
-            component="a"
-            href="https://github.com/mantinedev/mantine"
-            size="xl"
-            variant="default"
-            className={classes.control}
-            // leftIcon={<GithubIcon size={20} />}
-          >
-            GitHub
-          </Button>
-        </Group>
-      </Container>
+            <Button
+              component="a"
+              href="https://github.com/mantinedev/mantine"
+              size="xl"
+              variant="default"
+              className={classes.control}
+              // leftIcon={<GithubIcon size={20} />}
+            >
+              GitHub
+            </Button>
+          </Group>
+        </Container>
+      </BackgroundImage>
     </div>
   );
 }
