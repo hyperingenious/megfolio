@@ -88,11 +88,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeroTitle() {
+export function HeroTitle({homeSectionScroll}) {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} ref={homeSectionScroll}>
       <BackgroundImage src={bgImage} className={classes.darkBg} >
         <Container size={700} className={classes.inner}>
           <h1 className={classes.title}>

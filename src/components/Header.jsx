@@ -7,7 +7,6 @@ import {
   Container,
   Burger,
   rem,
-  BackgroundImage,
 } from "@mantine/core";
 // import { useDisclosure } from "@mantine/hooks";
 import {
@@ -30,7 +29,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   links: {
-    width: rem(260),
+    width: "22.25rem",
 
     [theme.fn.smallerThan("sm")]: {
       display: "none",
@@ -87,7 +86,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeaderMiddle({ links, opened, toggle }) {
+export function HeaderMiddle({ links, opened, toggle, scrolls }) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
@@ -101,6 +100,7 @@ export function HeaderMiddle({ links, opened, toggle }) {
       onClick={(event) => {
         event.preventDefault();
         setActive(link.link);
+        scrolls[link.scroll].current.scrollIntoView({ behavior: "smooth" });
       }}
     >
       {link.label}
@@ -109,30 +109,30 @@ export function HeaderMiddle({ links, opened, toggle }) {
 
   return (
     <Header height={56} mb={120}>
-        <Container className={classes.inner}>
-          <Burger
-            opened={opened}
-            onClick={toggle}
-            size="sm"
-            className={classes.burger}
-          />
-          <Group className={classes.links} spacing={5}>
-            {items}
-          </Group>
+      <Container className={classes.inner}>
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          size="sm"
+          className={classes.burger}
+        />
+        <Group className={classes.links} spacing={5}>
+          {items}
+        </Group>
 
-          <Group spacing={0} className={classes.social} position="right" noWrap>
-            <ActionIcon size="lg">
-              <IconBrandTwitter size="1.1rem" stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon size="lg">
-              <IconBrandYoutube size="1.1rem" stroke={1.5} />
-            </ActionIcon>
-            <ActionIcon size="lg">
-              <IconBrandInstagram size="1.1rem" stroke={1.5} />
-            </ActionIcon>
-            <SwitchTheme />
-          </Group>
-        </Container>
+        <Group spacing={0} className={classes.social} position="right" noWrap>
+          <ActionIcon size="lg">
+            <IconBrandTwitter size="1.1rem" stroke={1.5} />
+          </ActionIcon>
+          <ActionIcon size="lg">
+            <IconBrandYoutube size="1.1rem" stroke={1.5} />
+          </ActionIcon>
+          <ActionIcon size="lg">
+            <IconBrandInstagram size="1.1rem" stroke={1.5} />
+          </ActionIcon>
+          <SwitchTheme />
+        </Group>
+      </Container>
     </Header>
   );
 }

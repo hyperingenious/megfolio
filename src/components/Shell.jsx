@@ -1,36 +1,72 @@
-import { AppShell, BackgroundImage } from "@mantine/core";
+import { AppShell } from "@mantine/core";
 import { NavbarSimple as Navbar } from "./SideNav";
 import { HeaderMiddle as Header } from "./Header";
 import { useDisclosure } from "@mantine/hooks";
 import { HeroTitle as HeroSection } from "./HeroSection";
 import { About } from "./About";
 import Skills from "./Skills";
+import Projects from "./Projects";
+import { memo, useRef } from "react";
+import { ContactIcons } from "./Contact";
 
 const links = [
   {
-    link: "/about",
+    link: "/home",
     label: "Home",
+    scroll: "homeSectionScroll",
   },
   {
-    link: "/learn",
-    label: "Features",
+    link: "/about",
+    label: "About",
+    scroll: "aboutSectionScroll",
   },
   {
-    link: "/pricing",
-    label: "Pricing",
+    link: "/skills",
+    label: "Skills",
+    scroll: "skillsSectionScroll",
+  },
+  {
+    link: "/projects",
+    label: "Projects",
+    scroll: "projectsSectionScroll",
+  },
+  {
+    link: "/contact",
+    label: "Contact",
+    scroll: 'projectsSectionScroll'
   },
 ];
 
-export default function TheShell() {
+function TheShell() {
   const [opened, { toggle }] = useDisclosure(false);
+
+  const homeSectionScroll = useRef(null);
+  const aboutSectionScroll = useRef(null);
+  const skillsSectionScroll = useRef(null);
+  const projectsSectionScroll = useRef(null);
+  // const homeSectionScroll = useRef(null); // Later
+
+  const scrolls = {
+    homeSectionScroll,
+    aboutSectionScroll,
+    skillsSectionScroll,
+    projectsSectionScroll,
+  };
 
   return (
     <AppShell
       style={{
         margin: "0 !important",
       }}
-      navbar={<Navbar opened={opened} toggle={toggle} />}
-      header={<Header links={links} opened={opened} toggle={toggle} />}
+      navbar={<Navbar opened={opened} toggle={toggle} scrolls={scrolls} />}
+      header={
+        <Header
+          links={links}
+          opened={opened}
+          toggle={toggle}
+          scrolls={scrolls}
+        />
+      }
       styles={(theme) => ({
         main: {
           backgroundColor:
@@ -49,9 +85,12 @@ export default function TheShell() {
         },
       })}
     >
-      <HeroSection />
-      <About />
-      <Skills />
+      <HeroSection homeSectionScroll={homeSectionScroll} />
+      <About aboutSectionScroll={aboutSectionScroll} />
+      <Skills skillsSectionScroll={skillsSectionScroll} />
+      <Projects projectsSectionScroll={projectsSectionScroll} />
+      <ContactIcons/>
     </AppShell>
   );
 }
+export default memo(TheShell);

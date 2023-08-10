@@ -107,10 +107,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function About() {
+export function About({aboutSectionScroll}) {
   const { classes } = useStyles();
   return (
-    <div>
+    <div ref={aboutSectionScroll}>
       <Container>
         <div className={classes.inner}>
           <div className={classes.content}>

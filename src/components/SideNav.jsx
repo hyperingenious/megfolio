@@ -1,13 +1,11 @@
 import { useState } from "react";
 import { createStyles, Navbar, getStylesRef, rem } from "@mantine/core";
 import {
-  IconBellRinging,
-  IconFingerprint,
-  IconKey,
-  IconSettings,
-  Icon2fa,
-  IconDatabaseImport,
-  IconReceipt2,
+  IconWallpaper,
+  IconCode,
+  IconAddressBook,
+  IconUserCircle,
+  IconFiles,
 } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
@@ -83,16 +81,40 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const data = [
-  { link: "", label: "Notifications", icon: IconBellRinging },
-  { link: "", label: "Billing", icon: IconReceipt2 },
-  { link: "", label: "Security", icon: IconFingerprint },
-  { link: "", label: "SSH Keys", icon: IconKey },
-  { link: "", label: "Databases", icon: IconDatabaseImport },
-  { link: "", label: "Authentication", icon: Icon2fa },
-  { link: "", label: "Other Settings", icon: IconSettings },
+  {
+    scroll: "homeSectionScroll",
+    link: "",
+    label: "Home",
+    icon: IconUserCircle,
+  },
+  {
+    scroll: "aboutSectionScroll",
+    link: "",
+    label: "About",
+    icon: IconWallpaper,
+  },
+  {
+    scroll: "skillsSectionScroll",
+    link: "",
+    label: "Skills",
+    icon: IconCode,
+  },
+  {
+    scroll: "projectsSectionScroll",
+    link: "",
+    label: "Projects",
+    icon: IconFiles,
+  },
+  {
+    scroll: "projectsSectionScroll",
+    link: "",
+    label: "Contact",
+    icon: IconAddressBook,
+  },
+
 ];
 
-export function NavbarSimple({ opened, toggle }) {
+export function NavbarSimple({ opened, toggle, scrolls }) {
   const { classes, cx } = useStyles();
   const [active, setActive] = useState("Billing");
 
@@ -105,8 +127,9 @@ export function NavbarSimple({ opened, toggle }) {
       key={item.label}
       onClick={(event) => {
         event.preventDefault();
-        toggle()
+        toggle();
         setActive(item.label);
+        scrolls[item.scroll].current.scrollIntoView({behavior:'smooth'})
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />

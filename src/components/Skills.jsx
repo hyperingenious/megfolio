@@ -97,14 +97,14 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export default function Skills({ data = MOCKDATA }) {
+export default function Skills({ data = MOCKDATA, skillsSectionScroll }) {
   const { classes } = useStyles();
   const features = data.map((feature, index) => (
     <Feature {...feature} key={index} />
   ));
 
   return (
-    <Container className={classes.wrapper}>
+    <Container className={classes.wrapper} ref={skillsSectionScroll}>
       <Title className={classes.title}>Skills Section</Title>
 
       <Container size={560} p={0}>
@@ -119,8 +119,8 @@ export default function Skills({ data = MOCKDATA }) {
         cols={3}
         spacing={50}
         breakpoints={[
-          { maxWidth: 980, cols: 4, spacing: "xl" },
-          { maxWidth: 755, cols: 3, spacing: "xl" },
+          { maxWidth: 980, cols: 4,  },
+          { maxWidth: 755, cols: 4,  },
         ]}
       >
         {features}
