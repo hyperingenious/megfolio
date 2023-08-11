@@ -2,12 +2,12 @@ import {
   createStyles,
   Container,
   Text,
-  Button,
   Group,
   rem,
-  BackgroundImage,
+  // BackgroundImage,
 } from "@mantine/core";
-import bgImage from "../assets/bgImage.jpg";
+import Button from "../ui/Button";
+// import bgImage from "../assets/bgImage.jpg";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -88,19 +88,19 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function HeroTitle({homeSectionScroll}) {
+export function HeroTitle({ homeSectionScroll }) {
   const { classes } = useStyles();
 
   return (
     <div className={classes.wrapper} ref={homeSectionScroll}>
-      <BackgroundImage src={bgImage} className={classes.darkBg} >
+      {/* <BackgroundImage src={bgImage} className={classes.darkBg}> */}
         <Container size={700} className={classes.inner}>
           <h1 className={classes.title}>
             Hi I'm{" "}
             <Text
               component="span"
-              variant="gradient"
-              gradient={{ from: "purple", to: "pink" }}
+              // variant="gradient"
+              color="violet"
               inherit
             >
               Saurav Meghwal
@@ -116,27 +116,22 @@ export function HeroTitle({homeSectionScroll}) {
 
           <Group className={classes.controls}>
             <Button
-              size="xl"
-              className={classes.control}
-              variant="gradient"
-              gradient={{ from: "purple", to: "pink" }}
-            >
-              Get started
-            </Button>
-
+              text="Show Projects"
+              color={"violet"}
+              variant={"filled"}
+              size={"xl"}
+              radius={"md"}
+            />
             <Button
-              component="a"
-              href="https://github.com/mantinedev/mantine"
-              size="xl"
-              variant="default"
-              className={classes.control}
-              // leftIcon={<GithubIcon size={20} />}
-            >
-              GitHub
-            </Button>
+              color={"violet"}
+              text="Résumé"
+              variant={"outline"}
+              size={"xl"}
+              radius={"md"}
+            />
           </Group>
         </Container>
-      </BackgroundImage>
+      {/* </BackgroundImage> */}
     </div>
   );
 }

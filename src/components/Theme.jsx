@@ -11,13 +11,11 @@ export default function SwitchTheme() {
         size="lg"
         sx={(theme) => ({
           backgroundColor:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[6]
-              : theme.colors.gray[0],
+           `${theme.colors.violet[6]}1a`,
           color:
             theme.colorScheme === "dark"
-              ? theme.colors.yellow[4]
-              : theme.colors.blue[6],
+              ? theme.colors.violet[6]
+              : theme.colors.violet[6],
         })}
       >
         {colorScheme === "dark" ? (

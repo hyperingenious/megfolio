@@ -3,7 +3,6 @@ import {
   Image,
   Container,
   Title,
-  Button,
   Group,
   Text,
   rem,
@@ -11,6 +10,7 @@ import {
 import image1 from "../assets/project-1.png";
 import image2 from "../assets/project-1.png";
 import image3 from "../assets/project-1.png";
+import Button from "../ui/Button";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -60,10 +60,8 @@ const useStyles = createStyles((theme) => ({
 
   highlight: {
     position: "relative",
-    backgroundColor: theme.fn.variant({
-      variant: "light",
-      color: theme.primaryColor,
-    }).background,
+    background: "#7950f21a",
+
     borderRadius: theme.radius.sm,
     padding: `${rem(4)} ${rem(12)}`,
   },
@@ -102,9 +100,7 @@ export default function Projects({ projectsSectionScroll }) {
         <ProjectTitle classes={classes} />
         <div className={classes.inner}>
           {projectsData.map((data) => (
-            <>
-              <ProjectSection data={data} key={data.title} classes={classes} />
-            </>
+            <ProjectSection data={data} key={data.title} classes={classes} />
           ))}
         </div>
       </Container>
@@ -139,17 +135,20 @@ function ProjectSection({ data, classes }) {
         </Text>
 
         <Group mt={30}>
-          <Button radius="xl" size="md" className={classes.control}>
-            Get started
-          </Button>
           <Button
-            variant="default"
-            radius="xl"
-            size="md"
-            className={classes.control}
-          >
-            Source code
-          </Button>
+            text="Live Link"
+            color={"violet"}
+            variant={"filled"}
+            size={"lg"}
+            radius={"md"}
+          />
+          <Button
+            color={"violet"}
+            text="Source Code"
+            variant={"outline"}
+            size={"lg"}
+            radius={"md"}
+          />
         </Group>
       </div>
     </>

@@ -100,8 +100,8 @@ const useStyles = createStyles((theme) => ({
       width: rem(6),
       backgroundImage: theme.fn.linearGradient(
         0,
-        theme.colors.pink[6],
-        theme.colors.grape[8]
+        theme.colors.violet[6],
+        theme.colors.violet[6]
       ),
     },
   },
@@ -156,8 +156,7 @@ function CardGradient() {
       <ThemeIcon
         size="xl"
         radius="md"
-        variant="gradient"
-        gradient={{ deg: 0, from: "purple", to: "pink" }}
+        color="violet"
       >
         <IconUserCircle size={rem(28)} stroke={1.5} />
       </ThemeIcon>

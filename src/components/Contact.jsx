@@ -111,9 +111,7 @@ export function ContactIcons() {
         sx={(theme) => ({
           padding: theme.spacing.xl,
           borderRadius: theme.radius.md,
-            backgroundImage: `linear-gradient(135deg, ${
-              theme.colors.pink[6]
-            } 0%, ${theme.colors.grape[6]} 100%)`,
+            background:theme.colors.violet[6],
         })}
       >
         <ContactIconsList variant="white" />

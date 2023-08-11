@@ -8,6 +8,7 @@ import Skills from "./Skills";
 import Projects from "./Projects";
 import { memo, useRef } from "react";
 import { ContactIcons } from "./Contact";
+import { FooterSocial } from "./Footer";
 
 const links = [
   {
@@ -90,6 +91,7 @@ function TheShell() {
       <Skills skillsSectionScroll={skillsSectionScroll} />
       <Projects projectsSectionScroll={projectsSectionScroll} />
       <ContactIcons/>
+      <FooterSocial/>
     </AppShell>
   );
 }
