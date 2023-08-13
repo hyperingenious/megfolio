@@ -2,20 +2,17 @@ import {
   createStyles,
   Image,
   Container,
-  Title,
-  Button,
-  Group,
   Text,
-  List,
   Code,
   ThemeIcon,
   Paper,
   rem,
 } from "@mantine/core";
 
-import { IconCheck, IconColorSwatch, IconUserCircle } from "@tabler/icons-react";
-// import image from './image.svg';
+import { IconUserCircle } from "@tabler/icons-react";
 import image from "../assets/csk.svg";
+import Title from "./Title";
+import { memo } from "react";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -107,64 +104,49 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function About({aboutSectionScroll}) {
+export const About = memo(function About({ aboutSectionScroll }) {
   const { classes } = useStyles();
   return (
     <div ref={aboutSectionScroll}>
-      <Container>
+      <Container style={{ paddingTop: "2rem" }}>
+        <Title
+          title={"About"}
+          desc={
+            "Every once in a while, you’ll see a Golbat that’s missing some fangs.This happens when hunger drives it to try biting a Steel-type Pokémon."
+          }
+        />
         <div className={classes.inner}>
           <div className={classes.content}>
-            {/* <Title className={classes.title}>About Me</Title>
-            <Text color="dimmed" mt="md" className={classes.introductionText}>
-              Hey! It's Saurav I'm a Frontend Engineer living in INDIA and a
-              Person who understands businesses and designs very well, because
-              that is kind of innate quality of me. I've done made some cool
-              Frontend Projects you can see them on my portfolio Apart from
-              being tech person I have very good business stand as I have worked
-              with 2️⃣ Startups as a co-founder in my early age. I'm very good at
-              thinking from customer's POV. I understand Indian consumers very
-              well.
-            </Text>
-
-            <Group mt={30}>
-              <Button radius="xl" size="md" className={classes.control}>
-                Get started
-              </Button>
-              <Button
-                variant="default"
-                radius="xl"
-                size="md"
-                className={classes.control}
-              >
-                Source code
-              </Button> 
-            </Group>*/}
-              <CardGradient/>
+            <CardGradient />
           </div>
           <Image src={image} className={classes.image} />
         </div>
       </Container>
     </div>
   );
-}
-
+});
 
 function CardGradient() {
   const { classes } = useStyles();
   return (
     <Paper withBorder radius="md" className={classes.card}>
-      <ThemeIcon
-        size="xl"
-        radius="md"
-        color="violet"
-      >
+      <ThemeIcon size="xl" radius="md" color="violet">
         <IconUserCircle size={rem(28)} stroke={1.5} />
       </ThemeIcon>
       <Text size="xl" weight={500} mt="md">
-       About Me
+        About Me
       </Text>
       <Text size="sm" mt="sm" color="dimmed">
-       Lorem ipsum dolor sit amet,<Code>Frontend Developer</Code> consectetur adipisicing elit. Nemo, aperiam rem id architecto sed vero quidem possimus ut commodi aliquam tenetur delectus minima deserunt quasi? Ipsum possimus ex velit quae! Quisquam odio similique nisi officia atque quos cumque, tempore animi iusto, delectus in? Fuga in ducimus laudantium laborum eos ipsum voluptates voluptatum nulla delectus? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta, suscipit iure! Odio dolorum, ea laborum numquam assumenda sequi ratione, accusantium odit ipsam neque laboriosam nisi natus! Tempore iure enim soluta.
+        Lorem ipsum dolor sit amet,<Code>Frontend Developer</Code> consectetur
+        adipisicing elit. Nemo, aperiam rem id architecto sed vero quidem
+        possimus ut commodi aliquam tenetur delectus minima deserunt quasi?
+        Ipsum possimus ex velit quae! Quisquam odio similique nisi officia atque
+        quos cumque, tempore animi iusto, delectus in? Fuga in ducimus
+        laudantium laborum eos ipsum voluptates voluptatum nulla delectus? Lorem
+        ipsum dolor sit, amet consectetur adipisicing elit. Dicta, suscipit
+        iure! Odio dolorum, ea laborum numquam assumenda sequi ratione,
+        accusantium odit ipsam neque laboriosam nisi natus! Tempore iure enim
+        soluta.
       </Text>
     </Paper>
   );

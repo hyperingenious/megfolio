@@ -43,14 +43,10 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      color: theme.colors.violet[6],
 
       [`& .${getStylesRef("icon")}`]: {
-        color: theme.colorScheme === "dark" ? theme.white : theme.black,
+        color: theme.colors.violet[6],
       },
     },
   },
@@ -66,15 +62,10 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
+      backgroundColor: `${theme.colors.violet[6]}1a`,
+      color: theme.colors.violet[6],
       [`& .${getStylesRef("icon")}`]: {
-        color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-          .color,
+        color: theme.colors.violet[6],
       },
     },
   },
@@ -111,7 +102,6 @@ const data = [
     label: "Contact",
     icon: IconAddressBook,
   },
-
 ];
 
 export function NavbarSimple({ opened, toggle, scrolls }) {
@@ -129,7 +119,7 @@ export function NavbarSimple({ opened, toggle, scrolls }) {
         event.preventDefault();
         toggle();
         setActive(item.label);
-        scrolls[item.scroll].current.scrollIntoView({behavior:'smooth'})
+        scrolls[item.scroll].current.scrollIntoView({ behavior: "smooth" });
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />

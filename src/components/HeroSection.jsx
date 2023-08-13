@@ -7,7 +7,6 @@ import {
   // BackgroundImage,
 } from "@mantine/core";
 import Button from "../ui/Button";
-// import bgImage from "../assets/bgImage.jpg";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -94,43 +93,42 @@ export function HeroTitle({ homeSectionScroll }) {
   return (
     <div className={classes.wrapper} ref={homeSectionScroll}>
       {/* <BackgroundImage src={bgImage} className={classes.darkBg}> */}
-        <Container size={700} className={classes.inner}>
-          <h1 className={classes.title}>
-            Hi I'm{" "}
-            <Text
-              component="span"
-              // variant="gradient"
-              color="violet"
-              inherit
-            >
-              Saurav Meghwal
-            </Text>{" "}
-            , I'm Frontend Developer
-          </h1>
-
-          <Text className={classes.description} color="dimmed">
-            Build fully functional accessible web applications with ease –
-            Mantine includes more than 100 customizable components and hooks to
-            cover you in any situation
+      <Container size={700} className={classes.inner}>
+        <h1 className={classes.title}>
+          I'm{" "}
+          <Text
+            component="span"
+            // variant="gradient"
+            color="violet"
+            inherit
+          >
+            Saurav Meghwal
           </Text>
+          , Frontend Developer
+        </h1>
 
-          <Group className={classes.controls}>
-            <Button
-              text="Show Projects"
-              color={"violet"}
-              variant={"filled"}
-              size={"xl"}
-              radius={"md"}
-            />
-            <Button
-              color={"violet"}
-              text="Résumé"
-              variant={"outline"}
-              size={"xl"}
-              radius={"md"}
-            />
-          </Group>
-        </Container>
+        <Text className={classes.description} color="dimmed">
+          Build fully functional accessible web applications with ease
+          in any situation
+        </Text>
+
+        <Group className={classes.controls}>
+          <Button
+            text="Show Projects"
+            color={"violet"}
+            variant={"filled"}
+            size={"xl"}
+            radius={"md"}
+          />
+          <Button
+            color={"violet"}
+            text="Résumé"
+            variant={"outline"}
+            size={"xl"}
+            radius={"md"}
+          />
+        </Group>
+      </Container>
       {/* </BackgroundImage> */}
     </div>
   );

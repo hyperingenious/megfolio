@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import {
   createStyles,
   Header,
@@ -67,26 +67,22 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 500,
 
     "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.gray[0],
+      color: theme.colors.violet[6]
+       
     },
   },
 
   linkActive: {
     "&, &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
+      backgroundColor: `${theme.colors.violet[6]}1a`,
+      color: theme.colors.violet[6]
+
+
     },
   },
 }));
 
-export function HeaderMiddle({ links, opened, toggle, scrolls }) {
+export const HeaderMiddle = memo(function HeaderMiddle({ links, opened, toggle, scrolls }) {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
@@ -136,3 +132,4 @@ export function HeaderMiddle({ links, opened, toggle, scrolls }) {
     </Header>
   );
 }
+)

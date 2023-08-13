@@ -1,7 +1,6 @@
 import {
   ThemeIcon,
   Text,
-  Title,
   Container,
   SimpleGrid,
   createStyles,
@@ -16,6 +15,7 @@ import {
   IconBrandMantine,
   IconBrandTailwind,
 } from "@tabler/icons-react";
+import Title from "./Title";
 
 export const MOCKDATA = [
   {
@@ -60,7 +60,12 @@ export function Feature({ icon: Icon, title, color }) {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <ThemeIcon variant="light" size={40 * 2} radius={40 * 2} bg={`${color}1a`}>
+      <ThemeIcon
+        variant="light"
+        size={40 * 2}
+        radius={40 * 2}
+        bg={`${color}1a`}
+      >
         <Icon size="2.1rem" stroke={1.5} color={color} />
       </ThemeIcon>
       <Text mt="sm" mb={7}>
@@ -105,22 +110,19 @@ export default function Skills({ data = MOCKDATA, skillsSectionScroll }) {
 
   return (
     <Container className={classes.wrapper} ref={skillsSectionScroll}>
-      <Title className={classes.title}>Skills Section</Title>
-
-      <Container size={560} p={0}>
-        <Text size="sm" className={classes.description}>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit
-          nostrum, quisquam illo ex esse ea iste veniam
-        </Text>
-      </Container>
-
+      <Title
+        title={"Skills"}
+        desc={
+          "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit nostrum, quisquam illo ex esse ea veniam"
+        }
+      />
       <SimpleGrid
         mt={60}
         cols={3}
         spacing={50}
         breakpoints={[
-          { maxWidth: 980, cols: 4,  },
-          { maxWidth: 755, cols: 4,  },
+          { maxWidth: 980, cols: 4 },
+          { maxWidth: 755, cols: 4 },
         ]}
       >
         {features}

@@ -7,6 +7,7 @@ import {
   Stack,
 } from "@mantine/core";
 import { IconSun, IconPhone, IconMapPin, IconAt } from "@tabler/icons-react";
+import Title from "./Title";
 
 const useStyles = createStyles((theme, { variant }) => ({
   wrapper: {
@@ -19,9 +20,7 @@ const useStyles = createStyles((theme, { variant }) => ({
     marginRight: theme.spacing.md,
     backgroundImage:
       variant === "gradient"
-        ? `linear-gradient(135deg, ${theme.purple} 0%, ${
-            theme.pink
-          } 100%)`
+        ? `linear-gradient(135deg, ${theme.purple} 0%, ${theme.pink} 100%)`
         : "none",
     backgroundColor: "transparent",
   },
@@ -107,11 +106,19 @@ export function ContactIcons() {
       cols={1}
       breakpoints={[{ maxWidth: 755, cols: 1 }]}
     >
+      <Title
+        style={{ marginBottom: "1rem" }}
+        title={"Contact"}
+        desc={
+          "Every once in a while, you’ll see a Golbat that’s missing some fangs.This happens when hunger drives it to try biting a Steel-type Pokémon."
+        }
+      />
       <Box
         sx={(theme) => ({
           padding: theme.spacing.xl,
           borderRadius: theme.radius.md,
-            background:theme.colors.violet[6],
+          background: theme.colors.violet[6],
+          marginTop: theme.spacing.xl,
         })}
       >
         <ContactIconsList variant="white" />

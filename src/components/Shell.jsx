@@ -1,6 +1,6 @@
 import { AppShell } from "@mantine/core";
 import { NavbarSimple as Navbar } from "./SideNav";
-import { HeaderMiddle as Header } from "./Header";
+import  {HeaderMiddle as Header} from "./Header" ;
 import { useDisclosure } from "@mantine/hooks";
 import { HeroTitle as HeroSection } from "./HeroSection";
 import { About } from "./About";

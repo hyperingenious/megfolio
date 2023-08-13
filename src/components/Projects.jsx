@@ -2,15 +2,16 @@ import {
   createStyles,
   Image,
   Container,
-  Title,
   Group,
   Text,
+  Title as TitleFromMantine,
   rem,
 } from "@mantine/core";
 import image1 from "../assets/project-1.png";
 import image2 from "../assets/project-1.png";
 import image3 from "../assets/project-1.png";
 import Button from "../ui/Button";
+import Title from "./Title";
 
 const useStyles = createStyles((theme) => ({
   inner: {
@@ -110,16 +111,22 @@ export default function Projects({ projectsSectionScroll }) {
 
 function ProjectTitle({ classes }) {
   return (
-    <>
-      {" "}
-      <Title order={2} className={classes.title} ta="center" mt="sm">
-        Integrate effortlessly with any technology stack
-      </Title>
-      <Text c="dimmed" className={classes.description} ta="center" mt="md">
-        Every once in a while, you’ll see a Golbat that’s missing some fangs.
-        This happens when hunger drives it to try biting a Steel-type Pokémon.
-      </Text>
-    </>
+    // <>
+    //   {" "}
+    //   <Title order={2} className={classes.title} ta="center" mt="sm">
+    //     Integrate effortlessly with any technology stack
+    //   </Title>
+    //   <Text c="dimmed" className={classes.description} ta="center" mt="md">
+    //     Every once in a while, you’ll see a Golbat that’s missing some fangs.
+    //     This happens when hunger drives it to try biting a Steel-type Pokémon.
+    //   </Text>
+    // </>
+    <Title
+      title={"Project"}
+      desc={
+        "Every once in a while, you’ll see a Golbat that’s missing some fangs.This happens when hunger drives it to try biting a Steel-type Pokémon."
+      }
+    />
   );
 }
 function ProjectSection({ data, classes }) {
@@ -127,9 +134,9 @@ function ProjectSection({ data, classes }) {
     <>
       <Image src={data.image} className={classes.image} />
       <div className={classes.content}>
-        <Title className={classes.title}>
+        <TitleFromMantine className={classes.title}>
           <span className={classes.highlight}>{data.title}</span>
-        </Title>
+        </TitleFromMantine>
         <Text color="dimmed" mt="md" className={classes.desc} size={"lg"}>
           {data.description}
         </Text>
